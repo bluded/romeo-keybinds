@@ -1,0 +1,541 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>ROMEO Keybinds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: ROMEO main-menu homage. Mirrored kaleidoscope banner, then a paper sheet with ink rules, black bars and stencil-free grotesk type; keyboard board, notes, full list. Single light look by design. */
+:root {
+  color-scheme: light;
+  --paper: #dcdedb;
+  --paper-2: #e9eae7;
+  --card: #f3f3f0;
+  --ink: #111111;
+  --ink-2: #4a4c4a;
+  --rule: #a3a6a2;
+  --c-clik: #111111;
+  --c-weap: #c3263a;
+  --c-gear: #2c6a63;
+  --c-ui: #2b3d86;
+  --c-comp: #6f7d22;
+  --c-furn: #7a3878;
+  --c-move: #b5601f;
+  --k-red: #c8323a;
+  --k-navy: #1e2347;
+  --k-bone: #e8d2bd;
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --u: 60px;
+}
+body { background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 14px; line-height: 1.5; font-variation-settings: "wdth" 100; }
+.wrap { max-width: 1560px; margin: 0 auto; padding-inline: 20px; padding-block: 20px 48px; display: flex; flex-direction: column; gap: 26px; }
+
+.banner { position: relative; height: 190px; border: 1px solid var(--ink); background: var(--k-navy); overflow: hidden; }
+.banner canvas { display: block; width: 100%; height: 100%; }
+.banner .stamp { position: absolute; left: 0; bottom: 0; background: var(--ink); color: var(--paper-2); font: 600 12px var(--f-mono); letter-spacing: .18em; padding: 6px 12px; }
+.banner .stamp b { color: var(--k-red); font-weight: 600; }
+
+.head { display: grid; grid-template-columns: auto 1fr auto; gap: 0 28px; align-items: stretch; }
+.sigil { display: flex; flex-direction: column; justify-content: flex-start; gap: 8px; padding-right: 24px; border-right: 1px solid var(--ink); }
+.sigil svg { display: block; }
+.sigil .ast { font: 700 30px/1 var(--f-display); }
+.sigil .bar { width: 72px; height: 16px; background: var(--ink); }
+.titles { min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.kicker { font: 500 12px var(--f-mono); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-2); margin: 0; }
+h1 { margin: 0; font-family: var(--f-display); font-weight: 800; font-variation-settings: "wdth" 88; text-transform: uppercase; font-size: clamp(34px, 5.2vw, 64px); line-height: .95; letter-spacing: -.01em; text-wrap: balance; }
+h1 .unoff { color: var(--k-red); }
+.lede { margin: 0; max-width: 70ch; color: var(--ink-2); }
+.lede code, .note code, footer code { font-family: var(--f-mono); font-size: 12.5px; color: var(--ink); }
+.brand { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.brand .romeo { font: 800 40px/1 var(--f-display); font-variation-settings: "wdth" 92; letter-spacing: -.01em; display: flex; align-items: center; gap: 8px; }
+.brand .tag-line { font: 500 11px var(--f-mono); letter-spacing: .16em; text-transform: uppercase; line-height: 1.5; }
+
+.disclaimer { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; background: var(--ink); color: var(--paper-2); padding: 10px 16px; font-size: 13.5px; }
+.disclaimer strong { font: 700 13px var(--f-mono); letter-spacing: .18em; color: var(--paper-2); background: var(--k-red); padding: 2px 8px; }
+
+.strip { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); padding-block: 10px; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: 600 12.5px var(--f-body); color: var(--ink); background: transparent; border: 1px solid var(--ink); border-radius: 0; padding: 4px 10px 4px 8px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+.chip i { width: 11px; height: 11px; background: var(--c); display: block; }
+.chip .n { font: 500 11px var(--f-mono); color: var(--ink-2); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper-2); }
+.chip[aria-pressed="true"] .n { color: var(--paper-2); }
+.chip:focus-visible, .key:focus-visible { outline: 2px solid var(--k-red); outline-offset: 2px; }
+.notation { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12.5px; color: var(--ink-2); align-items: center; }
+.notation b { font-weight: 600; color: var(--ink); }
+
+kbd, .pre { font-family: var(--f-mono); font-weight: 500; }
+kbd { font-size: 12px; background: var(--card); border: 1px solid var(--ink); border-bottom-width: 2px; padding: 0 5px; white-space: nowrap; color: var(--ink); }
+
+.board-sec, .list-sec { display: flex; flex-direction: column; gap: 16px; }
+.board-scroll { overflow-x: auto; padding-bottom: 6px; }
+.board-row { display: flex; gap: 28px; align-items: flex-start; min-width: min-content; }
+.board { position: relative; flex: none; }
+.key { position: absolute; box-sizing: border-box; border: 1px solid var(--rule); background: transparent; color: var(--ink); padding: 3px 5px 4px; text-align: left; font-family: var(--f-body); display: flex; flex-direction: column; gap: 2px; overflow: hidden; cursor: default; border-radius: 0; }
+.key.bound { cursor: pointer; background: var(--card); border: 1.5px solid var(--ink); box-shadow: inset 0 4px 0 var(--c); padding-top: 7px; }
+.key .cap { font: 500 calc(var(--u) * .16)/1.1 var(--f-mono); color: var(--ink-2); white-space: nowrap; }
+.key.bound .cap { color: var(--ink); font-weight: 600; }
+.key .ln { font-size: calc(var(--u) * .13); font-weight: 600; font-variation-settings: "wdth" 80; line-height: 1.12; display: flex; gap: 3px; align-items: flex-start; min-width: 0; }
+.key .ln .dot { flex: none; width: calc(var(--u) * .085); height: calc(var(--u) * .085); background: var(--lc); margin-top: calc(var(--u) * .025); }
+.key .ln .t { min-width: 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow-wrap: normal; word-break: normal; hyphens: none; }
+.key .pre { flex: none; font-size: calc(var(--u) * .105); line-height: 1.35; color: #fff; background: var(--lc); padding: 0 calc(var(--u) * .03); }
+.key .warn { position: absolute; top: calc(var(--u) * .07); right: calc(var(--u) * .05); width: calc(var(--u) * .24); height: calc(var(--u) * .21); }
+.board.filtering .key.bound:not(.hit) { opacity: .25; }
+.board.filtering .key .ln.miss { opacity: .3; }
+.key.sel { outline: 2px solid var(--k-red); outline-offset: 1px; }
+
+.mouse { flex: none; }
+.mouse svg { display: block; }
+
+.detail { border: 1px solid var(--ink); background: var(--card); padding: 12px 16px; min-height: 60px; display: flex; flex-direction: column; gap: 6px; }
+.detail h3 { margin: 0; font: 600 12.5px var(--f-mono); letter-spacing: .12em; }
+.detail ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.detail li { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; }
+.who { color: var(--ink-2); font-size: 12.5px; }
+.romeo-tag { font: 600 10.5px var(--f-mono); letter-spacing: .06em; color: var(--paper-2); background: var(--ink); padding: 0 4px; margin-left: 5px; white-space: nowrap; }
+.mode { font: 500 11px var(--f-mono); color: var(--ink-2); margin-left: 4px; }
+
+.section-h { display: flex; align-items: center; gap: 14px; }
+.section-h h2 { margin: 0; font: 800 26px/1 var(--f-display); font-variation-settings: "wdth" 88; text-transform: uppercase; letter-spacing: .01em; }
+.section-h::after { content: ""; flex: 1; height: 10px; background: var(--ink); }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 20px; align-items: start; }
+.group { border: 1px solid var(--ink); background: var(--card); padding: 12px 16px 8px; min-width: 0; box-shadow: inset 0 5px 0 var(--c); padding-top: 16px; }
+.group h3 { margin: 0 0 6px; font: 800 15px var(--f-display); text-transform: uppercase; letter-spacing: .04em; display: flex; align-items: center; gap: 8px; }
+.group h3 i { width: 11px; height: 11px; background: var(--c); }
+.group table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.group td { padding: 6px 0; border-top: 1px solid var(--rule); vertical-align: top; }
+.group td:first-child { white-space: nowrap; padding-right: 12px; width: 1%; }
+.group td.dik { font: 500 11.5px var(--f-mono); color: var(--ink-2); text-align: right; padding-left: 8px; width: 1%; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.group .who { display: block; font-size: 12px; }
+
+.notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: 20px; }
+.note { border: 1px solid var(--ink); background: var(--card); padding: 14px 18px; min-width: 0; }
+.note h3 { margin: 0 0 6px; font: 800 15px var(--f-display); text-transform: uppercase; letter-spacing: .04em; display: flex; align-items: center; gap: 8px; }
+.note ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }
+.note p { margin: 0 0 8px; color: var(--ink-2); }
+.note li span { color: var(--ink-2); }
+
+footer { display: grid; grid-template-columns: auto 1fr; gap: 6px 24px; align-items: end; border-top: 1px solid var(--ink); padding-top: 14px; color: var(--ink-2); font-size: 12.5px; }
+.stamp-block { display: flex; flex-direction: column; gap: 4px; font: 500 12px var(--f-mono); color: var(--ink); }
+.barcode { width: 110px; height: 30px; background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 5px, transparent 5px 8px, var(--ink) 8px 11px, transparent 11px 12px); }
+.stamp-block small { font-size: 9.5px; letter-spacing: .08em; color: var(--ink-2); }
+
+/* Export sheets (rendered to PNG/PDF) */
+html.export .wrap { max-width: none; width: var(--sheet-w); box-sizing: border-box; padding-inline: 36px; }
+html.export .banner { height: 250px; }
+html.export .detail, html.export .board-scroll + .detail { display: none; }
+html.export .board-scroll { overflow: visible; }
+html.export-board .list-sec { display: none; }
+html.export-list .board-sec, html.export-list .notes, html.export-list .strip .notation { display: none; }
+html.export-list .cols { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 760px) { .head { grid-template-columns: 1fr; gap: 16px; } .sigil { display: none; } .brand { align-items: flex-start; text-align: left; } footer { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: no-preference) { .key, .chip { transition: opacity .15s, background .15s; } }
+</style>
+
+<div class="wrap">
+  <div class="head">
+    <div class="sigil" aria-hidden="true">
+      <svg width="72" height="64" viewBox="0 0 72 64"><path d="M36 2 L70 62 L2 62 Z" fill="#111"/><rect x="32.5" y="22" width="7" height="24" fill="#dcdedb"/><rect x="32.5" y="50" width="7" height="7" fill="#dcdedb"/></svg>
+      <span class="ast">*</span>
+      <span class="bar"></span>
+    </div>
+    <div class="titles">
+      <p class="kicker">S.T.A.L.K.E.R. G.A.M.M.A. · CLIKRΔD addon collection</p>
+      <h1><span class="unoff">Official</span> ROMEO Keybinds Infographic</h1>
+      <p class="lede">Every MCM hotkey that ROMEO's <code>xx-CLIKRΔD MCM Values</code> sets for a mod that's enabled in the ROMEO profile. Engine binds like movement, reload and use aren't shown because ROMEO doesn't change them.<span class="web-only"> Hover or tap a key for details.</span></p>
+    </div>
+    <div class="brand">
+      <span class="romeo">ROMEO <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><path d="M8 26 L26 8 M11 8 H26 V23" stroke="#111" stroke-width="5.5" fill="none" stroke-linecap="square"/></svg></span>
+      <span class="tag-line">Official reference</span>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="legend" id="legend" role="group" aria-label="Filter by category"></div>
+    <div class="notation" aria-label="Notation">
+      <span><kbd>⇧</kbd> <b>Shift +</b></span>
+      <span><kbd>Ctrl</kbd> <b>Ctrl +</b></span>
+      <span><kbd>Alt</kbd> <b>Alt +</b></span>
+      <span><kbd>hold</kbd> <b>hold key</b></span>
+      <span><kbd>2×</kbd> <b>double-tap</b></span>
+      <span style="display:inline-flex;align-items:center;gap:6px"><svg width="16" height="14" viewBox="0 0 24 21" aria-hidden="true"><path d="M12 1 L23 20 L1 20 Z" fill="#c3263a"/><rect x="10.8" y="7" width="2.4" height="7" fill="#fff"/><rect x="10.8" y="15.5" width="2.4" height="2.4" fill="#fff"/></svg> <b>two mods fire on the same input</b></span>
+    </div>
+  </div>
+
+  <section class="board-sec">
+    <div class="board-scroll" id="boardScroll">
+      <div class="board-row">
+        <div class="board" id="board" aria-label="Keyboard"></div>
+        <div class="mouse"><svg id="mouseSvg" width="250" height="320" viewBox="0 0 250 320" role="img" aria-label="Mouse side buttons"></svg></div>
+      </div>
+    </div>
+    <section class="detail" id="detail" aria-live="polite">
+      <h3>SELECT A KEY</h3>
+      <ul><li class="who">Keys with a black outline have at least one ROMEO bind. Click a category above to highlight only those keys.</li></ul>
+    </section>
+  </section>
+
+  <section class="notes">
+    <div class="note">
+      <h3><svg width="18" height="16" viewBox="0 0 24 21" aria-hidden="true"><path d="M12 1 L23 20 L1 20 Z" fill="#c3263a"/><rect x="10.8" y="7" width="2.4" height="7" fill="#fff"/><rect x="10.8" y="15.5" width="2.4" height="2.4" fill="#fff"/></svg>Shared inputs</h3>
+      <p>These keys trigger more than one mod with the same press. Rebind one of them in MCM if that gets in the way.</p>
+      <ul id="conflictList"></ul>
+    </div>
+    <div class="note">
+      <h3>Tap vs. hold on the same key</h3>
+      <p>These keys split actions by tap and hold. A tap-mode action fires on key-down, so holding the key can fire it as well.</p>
+      <ul>
+        <li><kbd>F</kbd> <span>tap: ledge grab · 2×: inspect weapon · hold: throw glowstick (plus the game's Use)</span></li>
+        <li><kbd>H</kbd> <span>tap: exo PSU power · hold: gas mask on/off</span></li>
+        <li><kbd>'</kbd> <span>tap: PAW quick pin · hold: quick action wheel</span></li>
+        <li><kbd>R</kbd> <span>tap: reload, which also unjams a jammed weapon · hold: ammo check</span></li>
+      </ul>
+    </div>
+    <div class="note">
+      <h3>Cinematic camera controls</h3>
+      <p>Press <kbd>-</kbd> to fly the camera. It takes every key until you exit.</p>
+      <ul>
+        <li><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> <span>move</span></li>
+        <li><kbd>Ctrl</kbd> + <kbd>W</kbd>/<kbd>S</kbd> <span>up / down</span></li>
+        <li><kbd>⇧</kbd> <span>fast</span> · <kbd>V</kbd> <span>toggle slow</span> · <span>wheel: cycle speed</span></li>
+        <li><kbd>-</kbd> or <kbd>Esc</kbd> <span>exit</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="list-sec">
+    <div class="section-h"><h2>Full bind list</h2></div>
+    <div class="cols" id="groups"></div>
+  </section>
+
+  <footer>
+    <div class="stamp-block"><span>05 / 25 / 1979</span><div class="barcode" aria-hidden="true"></div><small>S.T.A.L.K.E.R. G.A.M.M.A. · ROMEO</small></div>
+    <div>Source: <code>GAMMA/mods/xx-CLIKRΔD MCM Values/gamedata/configs/axr_options.ltx</code>, matched against the mods enabled in <code>profiles/CLIKRΔD - ROMEO/modlist.txt</code>. Key entries for mods that aren't enabled (Dynamic Hipfire, Dynamic Viewmodel, Mags Redux, old 3DSS and free-zoom options, and others) are left out. Free Zoom F.O.C sets its own key to none. Furniture keys only work in Hideout Furniture placement mode. <span class="romeo-tag">ROMEO</span> marks mods that ROMEO adds on top of base GAMMA.</div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  const H = location.hash.replace("#", "");
+  const EXPORT = H === "board" || H === "list";
+  if (EXPORT) {
+    document.documentElement.classList.add("export", "export-" + H);
+    document.documentElement.style.setProperty("--sheet-w", H === "board" ? "2860px" : "1900px");
+    document.querySelectorAll(".web-only").forEach(e => e.remove());
+  }
+
+  const CATS = {
+    clik: { name: "CLIKRΔD", c: "--c-clik" },
+    weap: { name: "Weapons & optics", c: "--c-weap" },
+    gear: { name: "Gear & survival", c: "--c-gear" },
+    ui:   { name: "PDA, HUD & map", c: "--c-ui" },
+    comp: { name: "Companions", c: "--c-comp" },
+    furn: { name: "Hideout furniture", c: "--c-furn" },
+    move: { name: "Movement", c: "--c-move" }
+  };
+
+  const BINDS = [
+    { k: "MINUS", dik: 12, act: "Cinematic camera on/off", s: "Cinematic cam", mod: "Cinematic Camera — CLIKRΔD", cat: "clik", r: 1 },
+    { k: "NUM1", dik: 79, act: "Open lean position editor", s: "Lean editor", mod: "Lean v2 — CLIKRΔD", cat: "clik", r: 1 },
+
+    { k: "R", dik: 19, mode: "hold", act: "Ammo check", s: "Ammo check", mod: "Ammo Check Enhanced Rework", cat: "weap", r: 1 },
+    { k: "R", dik: 19, m: "Ctrl", act: "Unjam", s: "Unjam", mod: "Ammo Check Enhanced Rework", cat: "weap", r: 1 },
+    { k: "R", dik: 19, m: "Shift", act: "Fast reload", s: "Fast reload", mod: "Ammo Check Enhanced Rework", cat: "weap", r: 1 },
+    { k: "T", dik: 20, act: "Next fire mode", s: "Fire mode", mod: "Ammo Check Enhanced Rework", cat: "weap", r: 1 },
+    { k: "T", dik: 20, m: "Shift", act: "Previous fire mode", s: "Prev mode", mod: "Ammo Check Enhanced Rework", cat: "weap", r: 1 },
+    { k: "F", dik: 33, mode: "2×", act: "Inspect weapon", s: "Inspect", mod: "Inspect Weapons Expanded", cat: "weap", r: 1 },
+    { k: "L", dik: 38, m: "Shift", act: "Lower weapon", s: "Lower weapon", mod: "Lower Weapon Sprint", cat: "weap" },
+    { k: "EQUALS", dik: 13, act: "Reflex sight reticle switch", s: "Reticle", mod: "3DSS for GAMMA", cat: "weap" },
+    { k: "J", dik: 36, act: "Magnifier switch", s: "Magnifier", mod: "3DSS for GAMMA", cat: "weap" },
+    { k: "NUMPLUS", dik: 78, act: "Toggle scope (tap: attach/detach · 2×: next scope)", s: "Toggle scope", mod: "Toggle Scope", cat: "weap" },
+    { k: "NUMPLUS", dik: 78, m: "Shift", act: "Scope view: move weapon further", s: "Scope further", mod: "3DSS scope FOV", cat: "weap" },
+    { k: "NUMMINUS", dik: 74, m: "Shift", act: "Scope view: move weapon closer", s: "Scope closer", mod: "3DSS scope FOV", cat: "weap" },
+    { k: "BACK", dik: 14, m: "Shift", act: "Scope view: reset current weapon", s: "Scope reset", mod: "3DSS scope FOV", cat: "weap" },
+    { k: "NUM3", dik: 81, act: "Laser settings panel", s: "Laser settings", mod: "Laser Settings", cat: "weap" },
+    { k: "M5", dik: 341, act: "Manual weapon tilt", s: "Weapon tilt", mod: "Weapon Cover Tilt", cat: "weap" },
+
+    { k: "F", dik: 33, mode: "hold", act: "Throw glowstick", s: "Glowstick", mod: "Glowsticks (GAMMA Starting Loadouts)", cat: "gear" },
+    { k: "G", dik: 34, mode: "hold", act: "Toggle gas mask filter", s: "Mask filter", mod: "Toxic Air Redux", cat: "gear", r: 1 },
+    { k: "H", dik: 35, act: "Exo PSU power", s: "Exo power", mod: "Powered Exos", cat: "gear" },
+    { k: "H", dik: 35, mode: "hold", act: "Gas mask equip/unequip", s: "Gas mask", mod: "FDDA Redone", cat: "gear" },
+    { k: "B", dik: 48, m: "Alt", act: "Check outfit animation", s: "Check outfit", mod: "FDDA Redone", cat: "gear" },
+    { k: "M", dik: 50, m: "Shift", act: "NVG settings panel", s: "NVG settings", mod: "Better Beef's NVGs", cat: "gear", r: 1 },
+    { k: "M", dik: 50, m: "Alt", act: "Wearable devices menu", s: "Wearables", mod: "Wearable Devices", cat: "gear", r: 1 },
+    { k: "M4", dik: 340, act: "Watch (tap: Promin inspect · hold: look at watch)", s: "Watch", mod: "Wearable Devices", cat: "gear", r: 1 },
+    { k: "N", dik: 49, act: "Attach patches", s: "Patches", mod: "Attach Patches with hotkey", cat: "gear" },
+    { k: "LSHIFT", dik: 42, act: "Drop hovered item (inventory)", s: "Drop item (inventory)", mod: "GAMMA Press Key to Drop Item", cat: "gear" },
+    { k: "LALT", dik: 56, act: "Autoloot", s: "Autoloot", mod: "Autolooter", cat: "gear" },
+
+    { k: "K", dik: 37, act: "Skills menu", s: "Skills menu", mod: "Skill System", cat: "ui" },
+    { k: "O", dik: 24, m: "Shift", act: "Detector glow settings", s: "Detector glow", mod: "DAR Emissive Glow", cat: "ui", r: 1 },
+    { k: "SEMI", dik: 39, act: "Toggle health HUD", s: "Health HUD", mod: "Body Health System (GAMMA Meds)", cat: "ui" },
+    { k: "SEMI", dik: 39, act: "Waypoint on/off", s: "Waypoint", mod: "Personal Adjustable Waypoint", cat: "ui" },
+    { k: "SEMI", dik: 39, m: "Alt", act: "Set waypoint on target", s: "WP target", mod: "Personal Adjustable Waypoint", cat: "ui" },
+    { k: "APOS", dik: 40, mode: "hold", act: "Quick action wheel", s: "Wheel", mod: "Quick Action Wheel", cat: "ui" },
+    { k: "APOS", dik: 40, act: "Quick pin", s: "Quick pin", mod: "Personal Adjustable Waypoint", cat: "ui" },
+    { k: "APOS", dik: 40, m: "Alt", act: "Pin on target object", s: "Pin target", mod: "Personal Adjustable Waypoint", cat: "ui" },
+    { k: "SLASH", dik: 53, act: "Minimap toggle", s: "Minimap", mod: "Minimap Toggle", cat: "ui" },
+    { k: "SLASH", dik: 53, act: "Cartography mode", s: "Cartography", mod: "Personal Adjustable Waypoint", cat: "ui" },
+    { k: "BSLASH", dik: 43, act: "PDA taskboard", s: "Taskboard", mod: "PDA Taskboard", cat: "ui" },
+    { k: "COMMA", dik: 51, act: "Previous pin icon", s: "Prev icon", mod: "Personal Adjustable Waypoint", cat: "ui" },
+    { k: "COMMA", dik: 51, m: "Alt", act: "Previous pin set", s: "Prev set", mod: "Personal Adjustable Waypoint", cat: "ui" },
+    { k: "PERIOD", dik: 52, act: "Next pin icon", s: "Next icon", mod: "Personal Adjustable Waypoint", cat: "ui" },
+    { k: "PERIOD", dik: 52, m: "Alt", act: "Next pin set", s: "Next set", mod: "Personal Adjustable Waypoint", cat: "ui" },
+    { k: "Z", dik: 44, m: "Ctrl", act: "Hold + mouse wheel: change pin set", s: "Set + wheel", mod: "Personal Adjustable Waypoint", cat: "ui" },
+    { k: "Z", dik: 44, m: "Alt", act: "Hold + mouse wheel: change pin icon", s: "Icon + wheel", mod: "Personal Adjustable Waypoint", cat: "ui" },
+
+    { k: "BSLASH", dik: 43, act: "Teleport squad to you", s: "Squad teleport", mod: "Fair Fast Travel", cat: "comp" },
+    { k: "NUM1", dik: 79, act: "Companions: cycle readiness", s: "Readiness", mod: "Useful Idiots (REDone Combat AI)", cat: "comp", r: 1 },
+    { k: "NUM2", dik: 80, act: "Companions: cycle movement", s: "Movement", mod: "Useful Idiots (REDone Combat AI)", cat: "comp", r: 1 },
+    { k: "NUM3", dik: 81, act: "Companions: move to point", s: "Move to point", mod: "Useful Idiots (REDone Combat AI)", cat: "comp", r: 1 },
+    { k: "NUM4", dik: 75, act: "Companions: cycle stance", s: "Stance", mod: "Useful Idiots (REDone Combat AI)", cat: "comp", r: 1 },
+    { k: "NUM5", dik: 76, act: "Companions: loot corpses", s: "Loot bodies", mod: "Useful Idiots (REDone Combat AI)", cat: "comp", r: 1 },
+
+    { k: "HOME", dik: 199, act: "Furniture placement mode", s: "Placement mode", mod: "Hideout Furniture", cat: "furn" },
+    { k: "TAB", dik: 15, act: "Furniture: toggle collision check", s: "Collision", mod: "Hideout Furniture", cat: "furn" },
+    { k: "CAPS", dik: 58, act: "Furniture: player / surface alignment", s: "Alignment", mod: "Hideout Furniture", cat: "furn" },
+
+    { k: "F", dik: 33, act: "Grab ledge", s: "Ledge grab", mod: "Ledge Grabbing", cat: "move" }
+  ];
+
+  const L = [];
+  const add = (id, cap, x, y, w = 1, h = 1) => L.push({ id, cap, x, y, w, h });
+  add("ESC", "Esc", 0, 0);
+  ["F1","F2","F3","F4"].forEach((f, i) => add(f, f, 2 + i, 0));
+  ["F5","F6","F7","F8"].forEach((f, i) => add(f, f, 6.5 + i, 0));
+  ["F9","F10","F11","F12"].forEach((f, i) => add(f, f, 11 + i, 0));
+  add("PRT", "PrtSc", 15.5, 0); add("SCRL", "ScrLk", 16.5, 0); add("PAUSE", "Pause", 17.5, 0);
+  const y1 = 1.3;
+  add("GRAVE", "`", 0, y1);
+  "1234567890".split("").forEach((d, i) => add("D" + d, d, 1 + i, y1));
+  add("MINUS", "-", 11, y1); add("EQUALS", "=", 12, y1); add("BACK", "Backspace", 13, y1, 2);
+  add("INS", "Ins", 15.5, y1); add("HOME", "Home", 16.5, y1); add("PGUP", "PgUp", 17.5, y1);
+  add("NUMLK", "Num", 19, y1); add("NUMDIV", "/", 20, y1); add("NUMMUL", "*", 21, y1); add("NUMMINUS", "−", 22, y1);
+  const y2 = y1 + 1;
+  add("TAB", "Tab", 0, y2, 1.5);
+  "QWERTYUIOP".split("").forEach((c, i) => add(c, c, 1.5 + i, y2));
+  add("LBR", "[", 11.5, y2); add("RBR", "]", 12.5, y2); add("BSLASH", "\\", 13.5, y2, 1.5);
+  add("DEL", "Del", 15.5, y2); add("END", "End", 16.5, y2); add("PGDN", "PgDn", 17.5, y2);
+  add("NUM7", "7", 19, y2); add("NUM8", "8", 20, y2); add("NUM9", "9", 21, y2); add("NUMPLUS", "+", 22, y2, 1, 2);
+  const y3 = y2 + 1;
+  add("CAPS", "Caps", 0, y3, 1.75);
+  "ASDFGHJKL".split("").forEach((c, i) => add(c, c, 1.75 + i, y3));
+  add("SEMI", ";", 10.75, y3); add("APOS", "'", 11.75, y3); add("ENTER", "Enter", 12.75, y3, 2.25);
+  add("NUM4", "4", 19, y3); add("NUM5", "5", 20, y3); add("NUM6", "6", 21, y3);
+  const y4 = y3 + 1;
+  add("LSHIFT", "Shift", 0, y4, 2.25);
+  "ZXCVBNM".split("").forEach((c, i) => add(c, c, 2.25 + i, y4));
+  add("COMMA", ",", 9.25, y4); add("PERIOD", ".", 10.25, y4); add("SLASH", "/", 11.25, y4); add("RSHIFT", "Shift", 12.25, y4, 2.75);
+  add("UP", "↑", 16.5, y4);
+  add("NUM1", "1", 19, y4); add("NUM2", "2", 20, y4); add("NUM3", "3", 21, y4); add("NUMENTER", "Ent", 22, y4, 1, 2);
+  const y5 = y4 + 1;
+  add("LCTRL", "Ctrl", 0, y5, 1.25); add("LWIN", "Win", 1.25, y5, 1.25); add("LALT", "Alt", 2.5, y5, 1.25);
+  add("SPACE", "", 3.75, y5, 6.25);
+  add("RALT", "AltGr", 10, y5, 1.25); add("FN", "Fn", 11.25, y5, 1.25); add("MENU", "Menu", 12.5, y5, 1.25); add("RCTRL", "Ctrl", 13.75, y5, 1.25);
+  add("LEFT", "←", 15.5, y5); add("DOWN", "↓", 16.5, y5); add("RIGHT", "→", 17.5, y5);
+  add("NUM0", "0", 19, y5, 2); add("NUMDEL", ".", 21, y5);
+  const BOARD_W = 23, BOARD_H = y5 + 1;
+
+  const capOf = id => (L.find(k => k.id === id) || {}).cap || ({ M4: "Mouse 4", M5: "Mouse 5" })[id] || id;
+  const keyLabel = id => {
+    const cap = capOf(id);
+    if (/^NUM/.test(id) && id !== "NUMLK") return "Num " + cap;
+    if (id === "LSHIFT") return "Left Shift";
+    if (id === "LALT") return "Left Alt";
+    return cap;
+  };
+  const preOf = b => b.m === "Shift" ? "⇧" : b.m ? b.m : b.mode ? b.mode : "";
+  function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]); }
+  const comboHTML = b => {
+    const parts = [];
+    if (b.m) parts.push(`<kbd>${b.m === "Shift" ? "⇧ Shift" : b.m}</kbd>`);
+    parts.push(`<kbd>${esc(keyLabel(b.k))}</kbd>`);
+    return parts.join(" + ") + (b.mode ? `<span class="mode">${b.mode === "2×" ? "double-tap" : "hold"}</span>` : "");
+  };
+  const romeoTag = b => b.r ? '<span class="romeo-tag">ROMEO</span>' : "";
+  const WARN = '<svg class="warn" viewBox="0 0 24 21" aria-hidden="true"><path d="M12 1 L23 20 L1 20 Z" fill="#c3263a"/><rect x="10.8" y="7" width="2.4" height="7" fill="#fff"/><rect x="10.8" y="15.5" width="2.4" height="2.4" fill="#fff"/></svg>';
+
+  const byKey = {};
+  BINDS.forEach(b => (byKey[b.k] = byKey[b.k] || []).push(b));
+  const sig = b => b.k + "|" + (b.m || "") + "|" + (b.mode || "");
+  const sigCount = {};
+  BINDS.forEach(b => sigCount[sig(b)] = (sigCount[sig(b)] || 0) + 1);
+  const shared = Object.keys(sigCount).filter(s => sigCount[s] > 1);
+
+  const board = document.getElementById("board");
+  const els = {};
+  L.forEach(k => {
+    const binds = byKey[k.id] || [];
+    const el = document.createElement(binds.length ? "button" : "div");
+    el.className = "key" + (binds.length ? " bound" : "");
+    el.dataset.id = k.id;
+    if (binds.length) {
+      el.type = "button";
+      el.style.setProperty("--c", `var(${CATS[binds[0].cat].c})`);
+      el.setAttribute("aria-label", keyLabel(k.id) + ": " + binds.map(b => (b.m ? b.m + " " : "") + (b.mode ? b.mode + " " : "") + b.act).join("; "));
+    }
+    let html = `<span class="cap">${esc(k.cap)}</span>`;
+    binds.forEach(b => {
+      const p = preOf(b);
+      html += `<span class="ln" data-cat="${b.cat}" style="--lc:var(${CATS[b.cat].c})">${p ? `<span class="pre">${esc(p)}</span>` : `<span class="dot"></span>`}<span class="t">${esc(b.s)}</span></span>`;
+    });
+    if (binds.some(b => shared.includes(sig(b)))) html += WARN;
+    el.innerHTML = html;
+    board.appendChild(el);
+    els[k.id] = { el, k };
+  });
+
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+  function layout() {
+    let u;
+    if (EXPORT) u = 106;
+    else {
+      const avail = document.getElementById("boardScroll").clientWidth - 250 - 28;
+      u = Math.max(50, Math.min(72, Math.floor(avail / BOARD_W)));
+    }
+    board.style.setProperty("--u", u + "px");
+    board.style.width = BOARD_W * u + "px";
+    board.style.height = BOARD_H * u + "px";
+    const g = Math.max(3, Math.round(u * .07));
+    Object.values(els).forEach(({ el, k }) => {
+      el.style.left = k.x * u + "px";
+      el.style.top = k.y * u + "px";
+      el.style.width = k.w * u - g + "px";
+      el.style.height = k.h * u - g + "px";
+    });
+    drawMouse();
+  }
+
+  function drawMouse() {
+    const svg = document.getElementById("mouseSvg");
+    const m4 = byKey.M4[0], m5 = byKey.M5[0];
+    const c4 = css(CATS[m4.cat].c), c5 = css(CATS[m5.cat].c), ink = css("--ink"), card = css("--card"), mut = css("--ink-2");
+    svg.innerHTML = `
+      <text x="0" y="16" fill="${ink}" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" letter-spacing="2">MOUSE · LEFT SIDE</text>
+      <rect x="0" y="24" width="64" height="6" fill="${ink}"/>
+      <path d="M168 62 C 214 62 222 110 222 172 C 222 250 200 300 168 300 C 136 300 114 250 114 172 C 114 110 122 62 168 62 Z" fill="${card}" stroke="${ink}" stroke-width="2"/>
+      <line x1="168" y1="62" x2="168" y2="132" stroke="${ink}" stroke-width="2"/>
+      <rect x="162" y="84" width="12" height="26" rx="6" fill="${ink}"/>
+      <rect x="110" y="146" width="12" height="30" fill="${c5}" stroke="${ink}" stroke-width="1.5"/>
+      <rect x="110" y="184" width="12" height="30" fill="${c4}" stroke="${ink}" stroke-width="1.5"/>
+      <path d="M110 161 H 92 L 76 132" stroke="${ink}" stroke-width="1.5" fill="none"/>
+      <path d="M110 199 H 92 L 76 228" stroke="${ink}" stroke-width="1.5" fill="none"/>
+      <text x="0" y="104" fill="${ink}" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600">MOUSE 5 · FWD</text>
+      <text x="0" y="124" fill="${c5}" font-family="Archivo, Arial, sans-serif" font-size="15" font-weight="800">${esc(m5.s.toUpperCase())}</text>
+      <text x="0" y="250" fill="${ink}" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600">MOUSE 4 · BACK</text>
+      <text x="0" y="270" fill="${c4}" font-family="Archivo, Arial, sans-serif" font-size="15" font-weight="800">${esc(m4.s.toUpperCase())}</text>
+      <text x="0" y="287" fill="${mut}" font-family="Archivo, Arial, sans-serif" font-size="11.5">tap: Promin · hold: look</text>`;
+  }
+
+  // Mirrored kaleidoscope banner, seeded so every render matches
+  function drawKaleido() {
+    const cv = document.getElementById("kscope");
+    const W = cv.clientWidth, Hh = cv.clientHeight;
+    if (!W || !Hh) return;
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    cv.width = Math.round(W * dpr); cv.height = Math.round(Hh * dpr);
+    const ctx = cv.getContext("2d");
+    let seed = 1979;
+    const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const pal = [css("--k-red"), "#8e1f2e", css("--k-navy"), "#3b3f6e", css("--k-bone"), "#d98a8a", "#2f4a45", "#f2e6da", "#5a1a2a"];
+    const tiles = 2;
+    const tw = cv.width / tiles, qw = Math.ceil(tw / 2), qh = Math.ceil(cv.height / 2);
+    const q = document.createElement("canvas"); q.width = qw; q.height = qh;
+    const qc = q.getContext("2d");
+    qc.fillStyle = css("--k-navy"); qc.fillRect(0, 0, qw, qh);
+    qc.filter = `blur(${1.6 * dpr}px)`;
+    for (let i = 0; i < 40; i++) {
+      const x = rnd() * qw, y = rnd() * qh, r = (0.15 + rnd() * 0.6) * qh;
+      const g = qc.createRadialGradient(x, y, 0, x, y, r);
+      const c = pal[Math.floor(rnd() * pal.length)];
+      g.addColorStop(0, c); g.addColorStop(0.55, c + "cc"); g.addColorStop(1, c + "00");
+      qc.fillStyle = g; qc.beginPath(); qc.ellipse(x, y, r * (0.6 + rnd()), r, rnd() * Math.PI, 0, Math.PI * 2); qc.fill();
+    }
+    for (let i = 0; i < 48; i++) {
+      qc.strokeStyle = pal[Math.floor(rnd() * pal.length)] + (rnd() > .5 ? "bb" : "66");
+      qc.lineWidth = (1 + rnd() * 5) * dpr;
+      qc.beginPath();
+      const x0 = rnd() * qw, y0 = rnd() * qh;
+      qc.moveTo(x0, y0);
+      qc.bezierCurveTo(rnd() * qw, rnd() * qh, rnd() * qw, rnd() * qh, rnd() * qw, rnd() * qh);
+      qc.stroke();
+    }
+    qc.filter = "none";
+    for (let t = 0; t < tiles; t++) {
+      const ox = t * tw;
+      const flipT = t % 2 === 1;
+      [[1, 1, 0, 0], [-1, 1, 2 * qw, 0], [1, -1, 0, 2 * qh], [-1, -1, 2 * qw, 2 * qh]].forEach(([sx, sy, tx, ty]) => {
+        ctx.setTransform(flipT ? -sx : sx, 0, 0, sy, ox + (flipT ? 2 * qw - tx : tx), ty);
+        ctx.drawImage(q, 0, 0);
+      });
+    }
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+  }
+
+  // Detail panel
+  const detail = document.getElementById("detail");
+  let selected = null;
+  function show(id) {
+    const binds = byKey[id];
+    if (!binds) return;
+    if (selected && els[selected]) els[selected].el.classList.remove("sel");
+    selected = id;
+    if (els[id]) els[id].el.classList.add("sel");
+    detail.innerHTML = `<h3>${esc(keyLabel(id).toUpperCase())} · DIK ${binds[0].dik}</h3><ul>` +
+      binds.map(b => `<li><span>${comboHTML(b)}</span><span>${esc(b.act)}</span><span class="who">${esc(b.mod)}${romeoTag(b)}</span></li>`).join("") + "</ul>";
+  }
+  board.addEventListener("mouseover", e => { const k = e.target.closest(".key.bound"); if (k) show(k.dataset.id); });
+  board.addEventListener("focusin", e => { const k = e.target.closest(".key.bound"); if (k) show(k.dataset.id); });
+  board.addEventListener("click", e => { const k = e.target.closest(".key.bound"); if (k) show(k.dataset.id); });
+
+  // Category filter
+  const legend = document.getElementById("legend");
+  let active = null;
+  Object.entries(CATS).forEach(([id, c]) => {
+    const n = BINDS.filter(b => b.cat === id).length;
+    const chip = document.createElement("button");
+    chip.type = "button"; chip.className = "chip"; chip.id = "chip-" + id;
+    chip.style.setProperty("--c", `var(${c.c})`);
+    chip.setAttribute("aria-pressed", "false");
+    chip.innerHTML = `<i></i>${esc(c.name)} <span class="n">${n}</span>`;
+    chip.addEventListener("click", () => { active = active === id ? null : id; applyFilter(); });
+    legend.appendChild(chip);
+  });
+  function applyFilter() {
+    board.classList.toggle("filtering", !!active);
+    legend.querySelectorAll(".chip").forEach(ch => ch.setAttribute("aria-pressed", String(ch.id === "chip-" + active)));
+    Object.values(els).forEach(({ el, k }) => {
+      const binds = byKey[k.id] || [];
+      el.classList.toggle("hit", !!active && binds.some(b => b.cat === active));
+      el.querySelectorAll(".ln").forEach(ln => ln.classList.toggle("miss", !!active && ln.dataset.cat !== active));
+    });
+  }
+
+  // Grouped list
+  const groups = document.getElementById("groups");
+  Object.entries(CATS).forEach(([id, c]) => {
+    const rows = BINDS.filter(b => b.cat === id);
+    const g = document.createElement("div");
+    g.className = "group";
+    g.style.setProperty("--c", `var(${c.c})`);
+    g.innerHTML = `<h3><i></i>${esc(c.name)}</h3><table><tbody>` +
+      rows.map(b => `<tr><td>${comboHTML(b)}</td><td>${esc(b.act)}<span class="who">${esc(b.mod)}${romeoTag(b)}</span></td><td class="dik">${b.dik}</td></tr>`).join("") +
+      `</tbody></table>`;
+    groups.appendChild(g);
+  });
+
+  document.getElementById("conflictList").innerHTML = shared.map(s => {
+    const bs = BINDS.filter(b => sig(b) === s);
+    return `<li>${comboHTML(bs[0])} <span>${bs.map(b => esc(b.act) + " (" + esc(b.mod) + ")").join(" + ")}</span></li>`;
+  }).join("");
+
+  layout();
+  window.addEventListener("resize", layout);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
+  if (!EXPORT) show("R");
+})();
+</script>
+
+</body></html>
