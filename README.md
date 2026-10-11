@@ -144,7 +144,7 @@ Each key entry was matched to the enabled mod whose MCM menu reads it. Entries f
 
 ## Credits
 
-- **ROMEO** addon collection by **CLIKRΔD**.
+- **ROMEO** addon collection by **CLIKRΔD GROUP**.
 - **S.T.A.L.K.E.R. G.A.M.M.A.** by Grokitach and the GAMMA team.
 - The features behind these hotkeys come from the individual mods and their authors, named in the tables above.
 - S.T.A.L.K.E.R. is a trademark of GSC Game World.
