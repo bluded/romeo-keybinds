@@ -28,10 +28,10 @@ It works in any modern browser, including on phones.
 
 - **Only MCM hotkeys are shown.** Movement, reload, use and the other base-game binds aren't listed, because ROMEO doesn't change them.
 - **MCM is the source of truth.** If your game behaves differently, check the mod's page in the MCM menu (Esc → MCM). You can rebind any of these keys there too.
-- **Shared keys.** `/`, `\`, `;`, `Num 1` and `Num 3` each trigger two mods with the same press. Rebind one of them in MCM if that gets in the way.
-- **Tap vs. hold.** `F`, `H`, `'` and `R` do different things on tap and hold. A tap-mode action fires as soon as the key goes down, so holding the key can trigger it as well.
+- **Shared keys.** `-`, `/`, `\`, `;`, `Num 1` and `Num 3` each trigger two mods with the same press. Rebind one of them in MCM if that gets in the way.
+- **Tap vs. hold.** `F`, `H`, `R` and `Space` do different things on tap, double-tap and hold. A tap-mode action fires as soon as the key goes down, so holding the key can trigger it as well.
 - **Hideout furniture keys** (`Home`, `Tab`, `Caps Lock`) only do something in Hideout Furniture placement mode.
-- **Cinematic camera.** `-` starts the fly camera, which takes over every key until you exit with `-` or `Esc`. Inside it: `W A S D` move, `Ctrl` + `W`/`S` go up/down, `Shift` is fast, `V` toggles slow, and the mouse wheel cycles speed.
+- **Cinematic camera.** `-` starts the fly camera, which takes over every key until you exit with `-` or `Esc`. Inside it: `W A S D` move, `Ctrl` + `W`/`S` go up/down, `Shift` is fast, `V` toggles slow, and the mouse wheel cycles speed. The LUT keys (`Num 9`, `Num 8`) work both in and out of the camera.
 
 ## All binds
 
@@ -43,20 +43,23 @@ It works in any modern browser, including on phones.
 |---|---|---|
 | `-` | Cinematic camera on/off | Cinematic Camera — CLIKRΔD ★ |
 | `Num 1` | Open lean position editor | Lean v2 — CLIKRΔD ★ |
+| `Num 9` | ROMEO colour grade (LUT) on/off | Cinematic Camera — CLIKRΔD ★ |
+| `Num 8` | LUT window (on/off + intensity) | Cinematic Camera — CLIKRΔD ★ |
 
 ### Weapons & optics
 
 | Input | Action | Mod |
 |---|---|---|
 | `R` (hold) | Ammo check | Ammo Check Enhanced Rework ★ |
+| `R` (double-tap) | Fast reload | Ammo Check Enhanced Rework ★ |
 | `Ctrl` + `R` | Unjam | Ammo Check Enhanced Rework ★ |
-| `Shift` + `R` | Fast reload | Ammo Check Enhanced Rework ★ |
-| `T` | Next fire mode | Ammo Check Enhanced Rework ★ |
-| `Shift` + `T` | Previous fire mode | Ammo Check Enhanced Rework ★ |
 | `F` (double-tap) | Inspect weapon | Inspect Weapons Expanded ★ |
 | `Shift` + `L` | Lower weapon | Lower Weapon Sprint |
-| `=` | Reflex sight reticle switch | 3DSS for GAMMA |
-| `J` | Magnifier switch | 3DSS for GAMMA |
+| `Alt` + `L` | Weapon tactical light on/off | Universal Tactical Light Framework ★ |
+| `=` | Reflex sight reticle: next | 3DSS for GAMMA |
+| `-` | Reflex sight reticle: previous | 3DSS for GAMMA |
+| `V` (double-tap) | Magnifier switch | 3DSS for GAMMA |
+| `Shift` + `Num 4` | Weapon camo wheel | 3DSS for GAMMA |
 | `Num +` | Toggle scope (tap: attach/detach · 2×: next scope) | Toggle Scope |
 | `Shift` + `Num +` | Scope view: move weapon further | 3DSS scope FOV |
 | `Shift` + `Num -` | Scope view: move weapon closer | 3DSS scope FOV |
@@ -85,11 +88,11 @@ It works in any modern browser, including on phones.
 | Input | Action | Mod |
 |---|---|---|
 | `K` | Skills menu | Skill System |
-| `Shift` + `O` | Detector glow settings | DAR Emissive Glow ★ |
+| `Shift` + `O` | Device glow settings | Living Devices ★ |
 | `;` | Toggle health HUD | Body Health System (GAMMA Meds) |
 | `;` | Waypoint on/off | Personal Adjustable Waypoint |
 | `Alt` + `;` | Set waypoint on target | Personal Adjustable Waypoint |
-| `'` (hold) | Quick action wheel | Quick Action Wheel |
+| `Z` (hold) | Quick action wheel | Quick Action Wheel |
 | `'` | Quick pin | Personal Adjustable Waypoint |
 | `Alt` + `'` | Pin on target object | Personal Adjustable Waypoint |
 | `/` | Minimap toggle | Minimap Toggle |
@@ -125,7 +128,7 @@ It works in any modern browser, including on phones.
 
 | Input | Action | Mod |
 |---|---|---|
-| `F` | Grab ledge | Ledge Grabbing |
+| `Space` (hold) | Grab ledge (hold jump at a ledge) | Ledge Grabbing |
 
 ## Where the data comes from
 

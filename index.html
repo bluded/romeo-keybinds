@@ -203,10 +203,10 @@ html.export-list .cols { grid-template-columns: repeat(3, 1fr); }
       <h3>Tap vs. hold on the same key</h3>
       <p>These keys split actions by tap and hold. A tap-mode action fires on key-down, so holding the key can fire it as well.</p>
       <ul>
-        <li><kbd>F</kbd> <span>tap: ledge grab · 2×: inspect weapon · hold: throw glowstick (plus the game's Use)</span></li>
+        <li><kbd>F</kbd> <span>2×: inspect weapon · hold: throw glowstick (plus the game's Use)</span></li>
         <li><kbd>H</kbd> <span>tap: exo PSU power · hold: gas mask on/off</span></li>
-        <li><kbd>'</kbd> <span>tap: PAW quick pin · hold: quick action wheel</span></li>
-        <li><kbd>R</kbd> <span>tap: reload, which also unjams a jammed weapon · hold: ammo check</span></li>
+        <li><kbd>R</kbd> <span>tap: reload, which also unjams a jammed weapon · 2×: fast reload · hold: ammo check</span></li>
+        <li><kbd>Space</kbd> <span>tap: jump · hold while jumping at a ledge: grab it</span></li>
       </ul>
     </div>
     <div class="note">
@@ -217,6 +217,7 @@ html.export-list .cols { grid-template-columns: repeat(3, 1fr); }
         <li><kbd>Ctrl</kbd> + <kbd>W</kbd>/<kbd>S</kbd> <span>up / down</span></li>
         <li><kbd>⇧</kbd> <span>fast</span> · <kbd>V</kbd> <span>toggle slow</span> · <span>wheel: cycle speed</span></li>
         <li><kbd>-</kbd> or <kbd>Esc</kbd> <span>exit</span></li>
+        <li><kbd>Num 9</kbd> <span>LUT on/off</span> · <kbd>Num 8</kbd> <span>LUT window (both work in and out of the camera)</span></li>
       </ul>
     </div>
   </section>
@@ -255,16 +256,19 @@ html.export-list .cols { grid-template-columns: repeat(3, 1fr); }
   const BINDS = [
     { k: "MINUS", dik: 12, act: "Cinematic camera on/off", s: "Cinematic cam", mod: "Cinematic Camera — CLIKRΔD", cat: "clik", r: 1 },
     { k: "NUM1", dik: 79, act: "Open lean position editor", s: "Lean editor", mod: "Lean v2 — CLIKRΔD", cat: "clik", r: 1 },
+    { k: "NUM9", dik: 73, act: "ROMEO colour grade (LUT) on/off", s: "LUT on/off", mod: "Cinematic Camera — CLIKRΔD", cat: "clik", r: 1 },
+    { k: "NUM8", dik: 72, act: "LUT window (on/off + intensity)", s: "LUT window", mod: "Cinematic Camera — CLIKRΔD", cat: "clik", r: 1 },
 
     { k: "R", dik: 19, mode: "hold", act: "Ammo check", s: "Ammo check", mod: "Ammo Check Enhanced Rework", cat: "weap", r: 1 },
+    { k: "R", dik: 19, mode: "2×", act: "Fast reload", s: "Fast reload", mod: "Ammo Check Enhanced Rework", cat: "weap", r: 1 },
     { k: "R", dik: 19, m: "Ctrl", act: "Unjam", s: "Unjam", mod: "Ammo Check Enhanced Rework", cat: "weap", r: 1 },
-    { k: "R", dik: 19, m: "Shift", act: "Fast reload", s: "Fast reload", mod: "Ammo Check Enhanced Rework", cat: "weap", r: 1 },
-    { k: "T", dik: 20, act: "Next fire mode", s: "Fire mode", mod: "Ammo Check Enhanced Rework", cat: "weap", r: 1 },
-    { k: "T", dik: 20, m: "Shift", act: "Previous fire mode", s: "Prev mode", mod: "Ammo Check Enhanced Rework", cat: "weap", r: 1 },
     { k: "F", dik: 33, mode: "2×", act: "Inspect weapon", s: "Inspect", mod: "Inspect Weapons Expanded", cat: "weap", r: 1 },
     { k: "L", dik: 38, m: "Shift", act: "Lower weapon", s: "Lower weapon", mod: "Lower Weapon Sprint", cat: "weap" },
-    { k: "EQUALS", dik: 13, act: "Reflex sight reticle switch", s: "Reticle", mod: "3DSS for GAMMA", cat: "weap" },
-    { k: "J", dik: 36, act: "Magnifier switch", s: "Magnifier", mod: "3DSS for GAMMA", cat: "weap" },
+    { k: "L", dik: 38, m: "Alt", act: "Weapon tactical light on/off", s: "Tac light", mod: "Universal Tactical Light Framework", cat: "weap", r: 1 },
+    { k: "EQUALS", dik: 13, act: "Reflex sight reticle: next", s: "Reticle next", mod: "3DSS for GAMMA", cat: "weap" },
+    { k: "MINUS", dik: 12, act: "Reflex sight reticle: previous", s: "Reticle prev", mod: "3DSS for GAMMA", cat: "weap" },
+    { k: "V", dik: 47, mode: "2×", act: "Magnifier switch", s: "Magnifier", mod: "3DSS for GAMMA", cat: "weap" },
+    { k: "NUM4", dik: 75, m: "Shift", act: "Weapon camo wheel", s: "Camo wheel", mod: "3DSS for GAMMA", cat: "weap" },
     { k: "NUMPLUS", dik: 78, act: "Toggle scope (tap: attach/detach · 2×: next scope)", s: "Toggle scope", mod: "Toggle Scope", cat: "weap" },
     { k: "NUMPLUS", dik: 78, m: "Shift", act: "Scope view: move weapon further", s: "Scope further", mod: "3DSS scope FOV", cat: "weap" },
     { k: "NUMMINUS", dik: 74, m: "Shift", act: "Scope view: move weapon closer", s: "Scope closer", mod: "3DSS scope FOV", cat: "weap" },
@@ -285,11 +289,11 @@ html.export-list .cols { grid-template-columns: repeat(3, 1fr); }
     { k: "LALT", dik: 56, act: "Autoloot", s: "Autoloot", mod: "Autolooter", cat: "gear" },
 
     { k: "K", dik: 37, act: "Skills menu", s: "Skills menu", mod: "Skill System", cat: "ui" },
-    { k: "O", dik: 24, m: "Shift", act: "Detector glow settings", s: "Detector glow", mod: "DAR Emissive Glow", cat: "ui", r: 1 },
+    { k: "O", dik: 24, m: "Shift", act: "Device glow settings", s: "Device glow", mod: "Living Devices", cat: "ui", r: 1 },
     { k: "SEMI", dik: 39, act: "Toggle health HUD", s: "Health HUD", mod: "Body Health System (GAMMA Meds)", cat: "ui" },
     { k: "SEMI", dik: 39, act: "Waypoint on/off", s: "Waypoint", mod: "Personal Adjustable Waypoint", cat: "ui" },
     { k: "SEMI", dik: 39, m: "Alt", act: "Set waypoint on target", s: "WP target", mod: "Personal Adjustable Waypoint", cat: "ui" },
-    { k: "APOS", dik: 40, mode: "hold", act: "Quick action wheel", s: "Wheel", mod: "Quick Action Wheel", cat: "ui" },
+    { k: "Z", dik: 44, mode: "hold", act: "Quick action wheel", s: "Wheel", mod: "Quick Action Wheel", cat: "ui" },
     { k: "APOS", dik: 40, act: "Quick pin", s: "Quick pin", mod: "Personal Adjustable Waypoint", cat: "ui" },
     { k: "APOS", dik: 40, m: "Alt", act: "Pin on target object", s: "Pin target", mod: "Personal Adjustable Waypoint", cat: "ui" },
     { k: "SLASH", dik: 53, act: "Minimap toggle", s: "Minimap", mod: "Minimap Toggle", cat: "ui" },
@@ -299,8 +303,8 @@ html.export-list .cols { grid-template-columns: repeat(3, 1fr); }
     { k: "COMMA", dik: 51, m: "Alt", act: "Previous pin set", s: "Prev set", mod: "Personal Adjustable Waypoint", cat: "ui" },
     { k: "PERIOD", dik: 52, act: "Next pin icon", s: "Next icon", mod: "Personal Adjustable Waypoint", cat: "ui" },
     { k: "PERIOD", dik: 52, m: "Alt", act: "Next pin set", s: "Next set", mod: "Personal Adjustable Waypoint", cat: "ui" },
-    { k: "Z", dik: 44, m: "Ctrl", act: "Hold + mouse wheel: change pin set", s: "Set + wheel", mod: "Personal Adjustable Waypoint", cat: "ui" },
-    { k: "Z", dik: 44, m: "Alt", act: "Hold + mouse wheel: change pin icon", s: "Icon + wheel", mod: "Personal Adjustable Waypoint", cat: "ui" },
+    { k: "Z", dik: 44, m: "Ctrl", act: "Hold + mouse wheel: change pin set", s: "Set scroll", mod: "Personal Adjustable Waypoint", cat: "ui" },
+    { k: "Z", dik: 44, m: "Alt", act: "Hold + mouse wheel: change pin icon", s: "Icon scroll", mod: "Personal Adjustable Waypoint", cat: "ui" },
 
     { k: "BSLASH", dik: 43, act: "Teleport squad to you", s: "Squad teleport", mod: "Fair Fast Travel", cat: "comp" },
     { k: "NUM1", dik: 79, act: "Companions: cycle readiness", s: "Readiness", mod: "Useful Idiots (REDone Combat AI)", cat: "comp", r: 1 },
@@ -313,7 +317,7 @@ html.export-list .cols { grid-template-columns: repeat(3, 1fr); }
     { k: "TAB", dik: 15, act: "Furniture: toggle collision check", s: "Collision", mod: "Hideout Furniture", cat: "furn" },
     { k: "CAPS", dik: 58, act: "Furniture: player / surface alignment", s: "Alignment", mod: "Hideout Furniture", cat: "furn" },
 
-    { k: "F", dik: 33, act: "Grab ledge", s: "Ledge grab", mod: "Ledge Grabbing", cat: "move" }
+    { k: "SPACE", dik: 57, mode: "hold", act: "Grab ledge (hold jump at a ledge)", s: "Ledge grab", mod: "Ledge Grabbing", cat: "move" }
   ];
 
   const L = [];
@@ -360,6 +364,7 @@ html.export-list .cols { grid-template-columns: repeat(3, 1fr); }
     if (/^NUM/.test(id) && id !== "NUMLK") return "Num " + cap;
     if (id === "LSHIFT") return "Left Shift";
     if (id === "LALT") return "Left Alt";
+    if (id === "SPACE") return "Space";
     return cap;
   };
   const preOf = b => b.m === "Shift" ? "⇧" : b.m ? b.m : b.mode ? b.mode : "";
